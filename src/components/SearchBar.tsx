@@ -3,8 +3,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { reset, setQuery, fetchImages } from "../features/images/imagesSlice";
 
 export default function SearchBar() {
-    const currentQuery = useAppSelector((s) => s.images.query);
-    const [text, setText] = useState(currentQuery);
+    const [text, setText] = useState("");
     const dispatch = useAppDispatch();
 
     const onSubmit = (e: FormEvent) => {
@@ -19,10 +18,10 @@ export default function SearchBar() {
         <form onSubmit={onSubmit} className="flex justify-center mb-4 gap-2">
             <input
                 type="text"
-                className="input input-bordered w-1/2"
                 placeholder="Поиск изображений..."
                 value={text}
                 onChange={(e) => setText(e.target.value)}
+                className="w-1/2 px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
             <button
                 type="submit"
