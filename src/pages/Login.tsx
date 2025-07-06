@@ -8,13 +8,21 @@ export default function Login() {
     return (
         <div className="flex flex-col items-center gap-4 mt-20">
             {!user ? (
-                <button className="btn" onClick={() => dispatch(loginWithGoogle())}>
+                <button
+                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition"
+                    onClick={() => dispatch(loginWithGoogle())}
+                >
                     Войти через Google
                 </button>
             ) : (
                 <>
                     <p>Привет, {user.displayName}</p>
-                    <button className="btn" onClick={() => dispatch(logout())}>Выйти</button>
+                    <button
+                        className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
+                        onClick={() => dispatch(logout())}
+                    >
+                        Выйти
+                    </button>
                 </>
             )}
         </div>

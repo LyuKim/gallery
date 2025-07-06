@@ -18,7 +18,7 @@ const initialState: ImagesState = {
     items: [],
     page: 1,
     status: "idle",
-    query: "",
+    query: "nature",
 };
 
 export const fetchImages = createAsyncThunk(
