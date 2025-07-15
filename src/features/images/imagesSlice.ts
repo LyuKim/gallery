@@ -53,7 +53,10 @@ const imagesSlice = createSlice({
             })
             .addCase(fetchImages.fulfilled, (state, action) => {
                 state.status = "idle";
-                state.items = [...state.items, ...action.payload];
+                const newItems = action.payload.filter(
+                    (img) => !state.items.some((existing) => existing.id === img.id)
+                );
+                state.items.push(...newItems);
                 state.page += 1;
             })
             .addCase(fetchImages.rejected, (state) => {

@@ -14,6 +14,7 @@ const provider = new GoogleAuthProvider();
 
 export const loginWithGoogle = createAsyncThunk("auth/google", async () => {
     const res = await signInWithPopup(auth, provider);
+    provider.setCustomParameters({ prompt: "select_account" })
     return res.user;
 });
 
@@ -47,6 +48,6 @@ const authSlice = createSlice({
     },
 });
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, (_user) => {
 });
 export default authSlice.reducer;
